@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://clxdnhfe0mq2d"]
+
+[ext_resource type="PackedScene" uid="uid://bif7ui6kelf27" path="res://scenes/player.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://bdjq4n1b38xao" path="res://scenes/tunnel_segment.tscn" id="2_w7c3h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_w8frs"]
+sky_material = SubResource("ProceduralSkyMaterial_w7c3h")
+
+[sub_resource type="Environment" id="Environment_mx8sn"]
+background_mode = 2
+sky = SubResource("Sky_w8frs")
+tonemap_mode = 2
+
+[node name="Level" type="Node3D" unique_id=1579516681]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=617869787]
+environment = SubResource("Environment_mx8sn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2055914399]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="player" parent="." unique_id=1637682301 instance=ExtResource("1_2q6dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -167.92032)
+
+[node name="Tunnel segment" parent="." unique_id=346022770 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.525)
