@@ -1,18 +1,23 @@
 [gd_scene format=3 uid="uid://bif7ui6kelf27"]
 
 [ext_resource type="Script" uid="uid://cwwruqlxde8uw" path="res://scenes/playerbody.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://jtdhn2bnarq8" path="res://scenes/camera_3d.gd" id="1_g2els"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u8vuu"]
 size = Vector3(0.5, 0.1, 0.3)
 
 [node name="player" type="Node3D" unique_id=1637682301]
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1104734639]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.16199714, -0.875)
+script = ExtResource("1_g2els")
+followLerp = 20.0
+
 [node name="Playerbody" type="Node3D" parent="." unique_id=1726695018]
 script = ExtResource("1_3vyb7")
 sensitivity = 0.05
+moveLerp = 10.0
+range = 49.0
 
 [node name="ShipMesh" type="MeshInstance3D" parent="Playerbody" unique_id=2123166375]
 mesh = SubResource("BoxMesh_u8vuu")
-
-[node name="Camera3D" type="Camera3D" parent="Playerbody" unique_id=1104734639]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.16199714, -0.875)
