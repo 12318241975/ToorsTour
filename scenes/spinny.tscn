@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://87miqafg6rku"]
+
+[ext_resource type="Script" uid="uid://dk0saqqbnw3tx" path="res://scripts/spinner.gd" id="1_ygdw6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fvls"]
+albedo_color = Color(0.6557519, 0.051910028, 0, 1)
+
+[node name="Spinny" type="Node3D" unique_id=1390899215]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1278180772]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+use_collision = true
+script = ExtResource("1_ygdw6")
+spinSpeed = 2.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1066482756]
+radius = 55.0
+material = SubResource("StandardMaterial3D_2fvls")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1746881919]
+transform = Transform3D(1, 0, 0, 0, 1.101577, 0, 0, 0, 1, -10.184452, -6.885635e-07, -15.752497)
+operation = 2
+radius = 12.23584
+material = SubResource("StandardMaterial3D_2fvls")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=808443689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.925278, 0, 0)
+operation = 2
+radius = 12.23584
+material = SubResource("StandardMaterial3D_2fvls")

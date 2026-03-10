@@ -29,3 +29,84 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -167.92032)
 
 [node name="Tunnel segment" parent="." unique_id=346022770 instance=ExtResource("2_w7c3h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64.525)
+
+[node name="Tunnel segment" parent="Tunnel segment" unique_id=435535499 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment" unique_id=40948816 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment/Tunnel segment" unique_id=490343338 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)
+
+[node name="Tunnel segment2" parent="Tunnel segment" unique_id=1259812504 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 390.27798)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment2" unique_id=100203154 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment2/Tunnel segment" unique_id=1574578317 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment2/Tunnel segment/Tunnel segment" unique_id=1371824026 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)
+
+[node name="Tunnel segment3" parent="Tunnel segment" unique_id=1994439748 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 774.64954)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3" unique_id=1908828859 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment" unique_id=974490931 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment/Tunnel segment" unique_id=520404738 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)
+
+[node name="Tunnel segment2" parent="Tunnel segment/Tunnel segment3" unique_id=1651232088 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 390.27798)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment2" unique_id=490424729 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment2/Tunnel segment" unique_id=1918844768 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment2/Tunnel segment/Tunnel segment" unique_id=751949778 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)
+
+[node name="Tunnel segment3" parent="Tunnel segment/Tunnel segment3" unique_id=1491680553 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 784.4689)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment3" unique_id=1482293769 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment3/Tunnel segment" unique_id=39118903 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment3/Tunnel segment/Tunnel segment" unique_id=538954255 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)
+
+[node name="Tunnel segment4" parent="Tunnel segment/Tunnel segment3" unique_id=1614598114 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1168.8405)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment4" unique_id=1740659339 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment4/Tunnel segment" unique_id=1500049666 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment4/Tunnel segment/Tunnel segment" unique_id=820858313 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)
+
+[node name="Tunnel segment2" parent="Tunnel segment/Tunnel segment3/Tunnel segment4" unique_id=1512664610 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 390.27798)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment4/Tunnel segment2" unique_id=1143263529 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 99.071495)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment4/Tunnel segment2/Tunnel segment" unique_id=1846890871 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 98.193436)
+
+[node name="Tunnel segment" parent="Tunnel segment/Tunnel segment3/Tunnel segment4/Tunnel segment2/Tunnel segment/Tunnel segment" unique_id=1028214630 instance=ExtResource("2_w7c3h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 96.86044)

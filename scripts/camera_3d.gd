@@ -1,6 +1,8 @@
 extends Camera3D
 @export var followLerp: float = 10
 @export var rotationLerp: float = 3.0
+@export var deadZoomDist: float = 4
+@export var deadLerp: float = 5
 
 @onready var player = $"../Playerbody"
 @onready var relativePos = position - player.position
@@ -17,3 +19,8 @@ func _process(delta: float) -> void:
 	var direction = player.position - position
 	var targetBasis = Basis.looking_at(direction)
 	basis = lerp(basis, targetBasis, rotationLerp * delta)
+
+
+func _on_playerbody_died() -> void:
+	relativePos.z -= deadZoomDist
+	followLerp = deadLerp

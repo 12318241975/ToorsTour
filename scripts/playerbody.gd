@@ -1,17 +1,22 @@
 extends Node3D
 @export var forwardSpeed: float = 10
+@export var speedIncrease: float = 1;
 @export var sensitivity: float = .5
 @export var moveLerp: float = 1;
 @export var range: float = 50;
 @export var tiltAmount: float = 2
 @export var tiltLerp: float = 5
 
+signal died
+
 var targetPos: Vector3
 var velocity: Vector3
+var isDead: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -25,12 +30,23 @@ func _unhandled_input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var prev_position = position
-	
+	if (isDead):
+		return
 	position.x = lerp(position.x, targetPos.x, moveLerp * delta)
 	position.y = lerp(position.y, targetPos.y, moveLerp * delta)
 	position.z += forwardSpeed * delta
+	forwardSpeed += speedIncrease * delta;
 	
 	velocity = position - prev_position
 	
-	rotation.z = lerp(rotation.z, -velocity.x * tiltAmount, tiltLerp * delta)
+	rotation.y = lerp(rotation.y, -velocity.x * tiltAmount, tiltLerp * delta)
 	rotation.x = lerp(rotation.x, velocity.y * tiltAmount, tiltLerp * delta)
+	
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group("obstacle"):
+		die()
+
+func die() -> void:
+	print("DEAD")
+	died.emit()
+	isDead = true
