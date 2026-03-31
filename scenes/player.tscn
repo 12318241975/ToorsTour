@@ -9,11 +9,15 @@ size = Vector3(0.2, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="LabelSettings" id="LabelSettings_g2els"]
+font_size = 100
+
 [node name="player" type="Node3D" unique_id=1637682301]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1104734639]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.16199714, -0.875)
 fov = 130.1
+far = 1000.0
 script = ExtResource("1_g2els")
 followLerp = 35.0
 rotationLerp = 5.0
@@ -23,9 +27,8 @@ deadZoomDist = 10.0
 collision_mask = 2
 script = ExtResource("1_3vyb7")
 forwardSpeed = 60.0
-sensitivity = 0.05
+sensitivity = 0.055
 moveLerp = 10.0
-range = 49.0
 tiltAmount = 20.0
 
 [node name="ShipMesh" type="MeshInstance3D" parent="Playerbody" unique_id=2123166375]
@@ -33,6 +36,21 @@ mesh = SubResource("BoxMesh_u8vuu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Playerbody" unique_id=1703818887]
 shape = SubResource("BoxShape3D_g2els")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=870143172]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 50.0
+offset_right = 86.0
+offset_bottom = 187.0
+grow_horizontal = 2
+text = "999"
+label_settings = SubResource("LabelSettings_g2els")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Playerbody" to="Playerbody" method="_on_body_entered"]
 [connection signal="died" from="Playerbody" to="Camera3D" method="_on_playerbody_died"]

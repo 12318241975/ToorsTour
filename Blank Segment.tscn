@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ce6cw11ecakba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv0fo"]
+albedo_color = Color(0.5518898, 0.47463244, 0.3272667, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" unique_id=1704132251]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1676074603]
+size = Vector3(55, 55, 100)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=755703079]
+operation = 2
+size = Vector3(50, 50, 100)
+material = SubResource("StandardMaterial3D_gv0fo")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1558580129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+operation = 2
+size = Vector3(100, 30, 30)
+material = SubResource("StandardMaterial3D_gv0fo")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1526716005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+operation = 2
+size = Vector3(100, 30, 30)
+material = SubResource("StandardMaterial3D_gv0fo")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=904030620]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, -25)
+operation = 2
+size = Vector3(100, 30, 30)
+material = SubResource("StandardMaterial3D_gv0fo")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=653687798]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 25)
+operation = 2
+size = Vector3(100, 30, 30)
+material = SubResource("StandardMaterial3D_gv0fo")

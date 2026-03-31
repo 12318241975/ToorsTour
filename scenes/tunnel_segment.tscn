@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bdjq4n1b38xao"]
 
-[ext_resource type="PackedScene" uid="uid://87miqafg6rku" path="res://scenes/spinny.tscn" id="1_gv0fo"]
 [ext_resource type="Script" uid="uid://1v2b4reh4ydf" path="res://scenes/tunnel_segment.gd" id="1_vkmnt"]
 [ext_resource type="PackedScene" uid="uid://qq4112xqw8kf" path="res://scenes/CubeObstacle.tscn" id="2_mmyq5"]
 [ext_resource type="PackedScene" uid="uid://cgkppm0jgdn5p" path="res://scenes/obstacle_(rectangle).tscn" id="3_pay3v"]
@@ -48,7 +47,3 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 operation = 2
 size = Vector3(100, 30, 30)
 material = SubResource("StandardMaterial3D_gv0fo")
-
-[node name="Spinny" parent="." unique_id=1390899215 instance=ExtResource("1_gv0fo")]
-transform = Transform3D(0.71080995, 0, 0, 0, 0.66087925, 0, 0, 0, 1, 0, 0, 0)
-visible = false

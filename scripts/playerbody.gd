@@ -3,12 +3,13 @@ extends Node3D
 @export var speedIncrease: float = 1;
 @export var sensitivity: float = .5
 @export var moveLerp: float = 1;
-@export var range: float = 50;
+@export var _range: float = 50;
 @export var tiltAmount: float = 2
 @export var tiltLerp: float = 5
 
 signal died
 
+@onready var scoreText = $"../CanvasLayer/Label"
 var targetPos: Vector3
 var velocity: Vector3
 var isDead: bool = false;
@@ -22,11 +23,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		targetPos.x -= event.relative.x * sensitivity #x in inverted
 		targetPos.y -= event.relative.y * sensitivity #y is inverted
-		targetPos.x = clamp(targetPos.x, -range/2, range/2)
-		targetPos.y = clamp(targetPos.y, -range/2, range/2)
+		targetPos.x = clamp(targetPos.x, -_range/2, _range/2)
+		targetPos.y = clamp(targetPos.y, -_range/2, _range/2)
 	elif event is InputEventKey:
 		if event.keycode == KEY_ESCAPE:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif event.keycode == KEY_R:
+			get_tree().reload_current_scene()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var prev_position = position
@@ -38,6 +41,7 @@ func _process(delta: float) -> void:
 	forwardSpeed += speedIncrease * delta;
 	
 	velocity = position - prev_position
+	scoreText.text = str(roundi(position.z/10))
 	
 	rotation.y = lerp(rotation.y, -velocity.x * tiltAmount, tiltLerp * delta)
 	rotation.x = lerp(rotation.x, velocity.y * tiltAmount, tiltLerp * delta)

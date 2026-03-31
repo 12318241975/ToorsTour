@@ -5,10 +5,10 @@ albedo_color = Color(0.51194984, 0.36704093, 0.2420809, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mmyq5"]
 material = SubResource("StandardMaterial3D_vkmnt")
-size = Vector3(20, 20, 60)
+size = Vector3(15, 15, 60)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gv0fo"]
-size = Vector3(20, 20, 60)
+size = Vector3(15, 15, 60)
 
 [node name="Obstacle (Cube)" type="StaticBody3D" unique_id=1657027793 groups=["obstacle"]]
 collision_layer = 2
