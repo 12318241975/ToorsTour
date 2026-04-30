@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://yfjwpeo6vm3h"]
+
+[sub_resource type="Curve" id="Curve_mnomo"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 13.370378, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ovwcu"]
+curve = SubResource("Curve_mnomo")
+
+[sub_resource type="Curve" id="Curve_3jo2u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ikruh"]
+curve = SubResource("Curve_3jo2u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v02gg"]
+lifetime_randomness = 0.2
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, 1)
+spread = 5.567
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.735
+damping_max = 3.4320002
+scale_min = 0.099999994
+scale_max = 0.099999994
+scale_curve = SubResource("CurveTexture_ovwcu")
+turbulence_enabled = true
+turbulence_noise_strength = 0.4
+turbulence_noise_scale = 2.632
+turbulence_influence_over_life = SubResource("CurveTexture_ikruh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gas2"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.4862745)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rff7x"]
+material = SubResource("StandardMaterial3D_2gas2")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Node3D" type="Node3D" unique_id=1338855082]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=20325964]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_v02gg")
+draw_pass_1 = SubResource("BoxMesh_rff7x")
