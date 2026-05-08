@@ -3,9 +3,43 @@
 [ext_resource type="Script" uid="uid://cwwruqlxde8uw" path="res://scripts/playerbody.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://jtdhn2bnarq8" path="res://scripts/camera_3d.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ckrqsqwleccwm" path="res://ship.fbx" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://dl3wo5fvwdgk5" path="res://ship.gd" id="4_dqkch"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlg0r"]
+emission_shape_scale = Vector3(50, 50, 50)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tuyoq"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
 size = Vector3(0.2, 0.052508544, 0.47456056)
+
+[sub_resource type="Curve" id="Curve_dqkch"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 12.155395, 0, 0, Vector2(1, 9.891395), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qlg0r"]
+curve = SubResource("Curve_dqkch")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqkch"]
+lifetime_randomness = 0.29
+emission_shape = 3
+emission_box_extents = Vector3(0.075, 0.025, 0.05)
+direction = Vector3(0, 0, 1)
+spread = 12.99
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_curve = SubResource("CurveTexture_qlg0r")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qlg0r"]
+size = Vector3(0.025, 0.025, 0.025)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g2els"]
 font_size = 100
@@ -21,21 +55,37 @@ followLerp = 35.0
 rotationLerp = 5.0
 deadZoomDist = 10.0
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D" unique_id=1829285796]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.109944e-06, -0.16199714, -47.012276)
+amount = 1000
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_qlg0r")
+draw_pass_1 = SubResource("BoxMesh_tuyoq")
+
 [node name="Playerbody" type="Area3D" parent="." unique_id=1751294781]
 collision_mask = 2
 script = ExtResource("1_3vyb7")
 forwardSpeed = 60.0
 sensitivity = 0.055
 moveLerp = 10.0
-tiltAmount = -2.0
-tiltLerp = 20.0
+tiltAmount = 1.0
+tiltLerp = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Playerbody" unique_id=1703818887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1358952e-05, -0.015112307)
 shape = SubResource("BoxShape3D_g2els")
 
 [node name="ship" parent="Playerbody" unique_id=1830704878 instance=ExtResource("3_qhqgy")]
-transform = Transform3D(0.4184606, 0, 0, 0, 0.4184606, 0, 0, 0, 0.4184606, 0, 0, 0)
+transform = Transform3D(-0.4184606, 0, -3.658299e-08, 0, 0.4184606, 0, 3.658299e-08, 0, -0.4184606, 0, 0, 0)
+script = ExtResource("4_dqkch")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Playerbody/ship" unique_id=757869248]
+transform = Transform3D(-2.3897111, 0, 2.089152e-07, 0, 2.3897111, 0, -2.089152e-07, 0, -2.3897111, 1.00704895e-07, 0, -1.1519295)
+visible = false
+amount = 200
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_dqkch")
+draw_pass_1 = SubResource("BoxMesh_qlg0r")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
 
@@ -54,3 +104,4 @@ horizontal_alignment = 1
 
 [connection signal="body_entered" from="Playerbody" to="Playerbody" method="_on_body_entered"]
 [connection signal="died" from="Playerbody" to="Camera3D" method="_on_playerbody_died"]
+[connection signal="died" from="Playerbody" to="Playerbody/ship" method="_on_playerbody_died"]
