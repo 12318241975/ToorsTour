@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://jtdhn2bnarq8" path="res://scripts/camera_3d.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://ckrqsqwleccwm" path="res://ship.fbx" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://dl3wo5fvwdgk5" path="res://ship.gd" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://dcosc1kqk1oq6" path="res://scenes/ring.tscn" id="5_qlg0r"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlg0r"]
 emission_shape_scale = Vector3(50, 50, 50)
@@ -18,28 +19,6 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g2els"]
 size = Vector3(0.2, 0.052508544, 0.47456056)
-
-[sub_resource type="Curve" id="Curve_dqkch"]
-_limits = [0.0, 10.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 12.155395, 0, 0, Vector2(1, 9.891395), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_qlg0r"]
-curve = SubResource("Curve_dqkch")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dqkch"]
-lifetime_randomness = 0.29
-emission_shape = 3
-emission_box_extents = Vector3(0.075, 0.025, 0.05)
-direction = Vector3(0, 0, 1)
-spread = 12.99
-gravity = Vector3(0, 0, 0)
-damping_min = 1.0
-damping_max = 1.0
-scale_curve = SubResource("CurveTexture_qlg0r")
-
-[sub_resource type="BoxMesh" id="BoxMesh_qlg0r"]
-size = Vector3(0.025, 0.025, 0.025)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g2els"]
 font_size = 100
@@ -57,6 +36,7 @@ deadZoomDist = 10.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D" unique_id=1829285796]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 4.109944e-06, -0.16199714, -47.012276)
+visible = false
 amount = 1000
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_qlg0r")
@@ -79,14 +59,6 @@ shape = SubResource("BoxShape3D_g2els")
 transform = Transform3D(-0.4184606, 0, -3.658299e-08, 0, 0.4184606, 0, 3.658299e-08, 0, -0.4184606, 0, 0, 0)
 script = ExtResource("4_dqkch")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Playerbody/ship" unique_id=757869248]
-transform = Transform3D(-2.3897111, 0, 2.089152e-07, 0, 2.3897111, 0, -2.089152e-07, 0, -2.3897111, 1.00704895e-07, 0, -1.1519295)
-visible = false
-amount = 200
-trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_dqkch")
-draw_pass_1 = SubResource("BoxMesh_qlg0r")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=870143172]
@@ -101,6 +73,86 @@ grow_horizontal = 2
 text = "999"
 label_settings = SubResource("LabelSettings_g2els")
 horizontal_alignment = 1
+
+[node name="CSGBox3D" parent="." unique_id=2084896251 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 549)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D2" parent="." unique_id=2060156943 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 589)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D3" parent="." unique_id=1544311000 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 469)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D4" parent="." unique_id=363651949 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 509)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D5" parent="." unique_id=2131840935 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 389)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D6" parent="." unique_id=1598736481 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 429)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D7" parent="." unique_id=2060623181 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 309)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D8" parent="." unique_id=640934454 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 349)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D9" parent="." unique_id=1113367705 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 229)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D10" parent="." unique_id=612473816 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 269)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D11" parent="." unique_id=179672496 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 149)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D12" parent="." unique_id=2115883355 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 189)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D13" parent="." unique_id=1029388535 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 69)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D14" parent="." unique_id=248434503 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 109)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D15" parent="." unique_id=1667354764 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -11)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
+
+[node name="CSGBox3D16" parent="." unique_id=1311107632 instance=ExtResource("5_qlg0r")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 29)
+rotationSpeedMax = -3
+rotationSpeedMin = 3
 
 [connection signal="body_entered" from="Playerbody" to="Playerbody" method="_on_body_entered"]
 [connection signal="died" from="Playerbody" to="Camera3D" method="_on_playerbody_died"]

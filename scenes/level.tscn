@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bkeko63l5c7cm" path="res://scenes/level.gd" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://ce6cw11ecakba" path="res://Blank Segment.tscn" id="2_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://bdjq4n1b38xao" path="res://scenes/tunnel_segment.tscn" id="2_w7c3h"]
+[ext_resource type="Script" uid="uid://dgrro0bv81cdo" path="res://scenes/pulsator.gd" id="5_ppgk2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -14,8 +15,15 @@ sky_material = SubResource("ProceduralSkyMaterial_w7c3h")
 
 [sub_resource type="Environment" id="Environment_mx8sn"]
 background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_w8frs")
 tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.99
+glow_bloom = 0.54
+fog_enabled = true
+fog_light_energy = 0.0
+fog_density = 0.002
 
 [node name="Level" type="Node3D" unique_id=1579516681]
 script = ExtResource("1_w7c3h")
@@ -31,6 +39,14 @@ environment = SubResource("Environment_mx8sn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2055914399]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="player" parent="." unique_id=1637682301 instance=ExtResource("1_2q6dc")]
+
+[node name="pulsator" type="Node3D" parent="." unique_id=820228084]
+script = ExtResource("5_ppgk2")
+rest_brightness = 0.8
+max_brightness = 3.0
+decay_steepness = 2.0
+fade_speed = 100.0

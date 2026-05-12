@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcosc1kqk1oq6"]
+
+[ext_resource type="Material" uid="uid://bj7lucv65ole4" path="res://textures/phych2.tres" id="1_f7lrs"]
+[ext_resource type="Script" uid="uid://dt0ffg2wcqm3" path="res://scenes/follow ring.gd" id="2_d05vm"]
+
+[node name="CSGBox3D" type="CSGBox3D" unique_id=2084896251]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+size = Vector3(150, 150, 40)
+material = ExtResource("1_f7lrs")
+script = ExtResource("2_d05vm")
+rotationSpeedMax = -2
+rotationSpeedMin = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1307104107]
+operation = 2
+size = Vector3(80, 80, 50)
+material = ExtResource("1_f7lrs")

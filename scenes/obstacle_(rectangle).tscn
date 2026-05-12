@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://cgkppm0jgdn5p"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkmnt"]
-albedo_color = Color(0.51194984, 0.36704093, 0.2420809, 1)
+[ext_resource type="Material" uid="uid://chru1r0nl3rin" path="res://textures/phych.tres" id="1_nypmu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mmyq5"]
-material = SubResource("StandardMaterial3D_vkmnt")
+material = ExtResource("1_nypmu")
 size = Vector3(15, 15, 60)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gv0fo"]

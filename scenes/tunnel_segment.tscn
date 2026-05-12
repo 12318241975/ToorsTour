@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://qq4112xqw8kf" path="res://scenes/CubeObstacle.tscn" id="2_mmyq5"]
 [ext_resource type="PackedScene" uid="uid://cgkppm0jgdn5p" path="res://scenes/obstacle_(rectangle).tscn" id="3_pay3v"]
 [ext_resource type="PackedScene" uid="uid://c8t1el2cbmt8e" path="res://scenes/obstacle_(BigRec).tscn" id="4_au53x"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv0fo"]
-albedo_color = Color(0.5518898, 0.47463244, 0.3272667, 1)
+[ext_resource type="Material" uid="uid://chru1r0nl3rin" path="res://textures/phych.tres" id="5_au53x"]
 
 [node name="Tunnel segment" type="Node3D" unique_id=346022770]
 script = ExtResource("1_vkmnt")
@@ -22,28 +20,28 @@ size = Vector3(55, 55, 100)
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D" unique_id=158136832]
 operation = 2
 size = Vector3(50, 50, 100)
-material = SubResource("StandardMaterial3D_gv0fo")
+material = ExtResource("5_au53x")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=553522836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
 operation = 2
 size = Vector3(100, 30, 30)
-material = SubResource("StandardMaterial3D_gv0fo")
+material = ExtResource("5_au53x")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1255715209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 operation = 2
 size = Vector3(100, 30, 30)
-material = SubResource("StandardMaterial3D_gv0fo")
+material = ExtResource("5_au53x")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=729530912]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, -25)
 operation = 2
 size = Vector3(100, 30, 30)
-material = SubResource("StandardMaterial3D_gv0fo")
+material = ExtResource("5_au53x")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=437494854]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 25)
 operation = 2
 size = Vector3(100, 30, 30)
-material = SubResource("StandardMaterial3D_gv0fo")
+material = ExtResource("5_au53x")
