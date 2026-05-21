@@ -11,7 +11,11 @@ extends Node3D
 
 signal died
 
-@onready var scoreText = $"../CanvasLayer/Label"
+@onready var scoreText = $"../follow/Node3D/Label3D"
+@onready var scoreText2 = $"../follow/Node3D2/Label3D"
+@onready var speedText = $"../follow/Node3D3/Label3D"
+@onready var speedText2 = $"../follow/Node3D4/Label3D"
+@onready var finalScoreText = $"..CanvasLayer/Label"
 
 var targetPos: Vector3
 var velocity: Vector3
@@ -47,6 +51,9 @@ func _process(delta: float) -> void:
 
 	velocity = position - prev_position
 	scoreText.text = str(roundi(position.z / 10))
+	scoreText2.text = str(roundi(position.z / 10))
+	speedText.text = str(roundi(velocity.z * 100))
+	speedText2.text = str(roundi(velocity.z * 100))
 
 	_update_visual_rotation(delta)
 
@@ -65,5 +72,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 func die() -> void:
 	print("DEAD")
+	finalScoreText.visable = true
+	finalScoreText.text = str(roundi(position.z / 10))
 	died.emit()
 	isDead = true

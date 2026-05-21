@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://crotjw0lvpxq3"]
+
+[ext_resource type="Script" uid="uid://6arbjqgvuyn6" path="res://scenes/floating.gd" id="1_rkrm4"]
+[ext_resource type="Material" uid="uid://utr5lm3hfllf" path="res://textures/Nate.tres" id="2_uex4l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0v5o6"]
+size = Vector3(10, 10, 10)
+
+[node name="Node3D" type="Node3D" unique_id=247141091]
+script = ExtResource("1_rkrm4")
+hover_height = 2.0
+tilt_amount = 8.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1938478579]
+material_override = ExtResource("2_uex4l")
+mesh = SubResource("BoxMesh_0v5o6")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1810181305]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.11340451, -5.198039)
+pixel_size = 0.1
+text = "999"

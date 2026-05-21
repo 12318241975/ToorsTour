@@ -1,33 +1,47 @@
 extends Node3D
 
-var phych2 = load("res://textures/phych.tres")
+@export var targetMat: StandardMaterial3D
 
 @export var bpm: float = 130.0
-@export var rest_brightness: float = 0.5
+@export var rest_brightness: float = 0.0 # Set to 0 for pure black between beats
 @export var max_brightness: float = 8.0
-@export var decay_steepness: float = 4.0 # Higher = faster snap, longer tail
+@export var decay_steepness: float = 4.0 
+
+@export_range(0.0, 1.0) var max_tint_amount: float = 1.0 
+@export var fade_speed: float = 0.5
 
 var time_passed: float = 0.0
 var fade_in: float = 0.0
-@export var fade_speed: float = 0.5
+var last_beat_index: int = -1 
+var current_color: Color = Color.BLACK # Start at black
 
 func _process(delta: float) -> void:
-	# 1. Initial fade-in of the effect
+	# 1. Global Fade-in (Initial game start)
 	fade_in = min(1.0, fade_in + fade_speed * delta)
 	
-	# 2. Progress through the beats
+	# 2. Beat Tracking
 	time_passed += delta * (bpm / 60.0)
+	var current_beat_index = int(time_passed)
 	
-	# 3. Create a "Sawtooth" ramp (goes 0 to 1, then snaps back to 0)
+	# Detect new beat and pick a new target color
+	if current_beat_index > last_beat_index:
+		pick_new_color()
+		last_beat_index = current_beat_index
+
+	# 3. Pulse Math (1.0 at hit, 0.0 at rest)
 	var beat_progress = fmod(time_passed, 1.0)
+	var pulse = pow(1.0 - beat_progress, decay_steepness)
 	
-	# 4. Invert it: Starts at 1.0 (on the beat) and goes to 0.0
-	var pulse = 1.0 - beat_progress
+	# 4. Color Logic: Fade from Black to the Random Color
+	# This ensures the "hue" disappears as the light dims
+	var tinted_color = Color.BLACK.lerp(current_color, max_tint_amount)
 	
-	# 5. The Magic: Raise it to a power to make it "curved"
-	# This makes the drop-off start very sharp and slow down at the end
-	pulse = pow(pulse, decay_steepness)
-	
-	# 6. Apply to material
+	# 5. Apply to Material
 	var final_strength = lerp(rest_brightness, max_brightness, pulse)
-	phych2.emission_energy_multiplier = final_strength * fade_in
+	
+	# We multiply the color by the pulse here to ensure it goes to black
+	targetMat.emission = tinted_color * pulse
+	targetMat.emission_energy_multiplier = final_strength * fade_in
+
+func pick_new_color():
+	current_color = Color.from_hsv(randf(), 1.0, 1.0)

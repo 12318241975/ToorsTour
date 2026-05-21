@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://clxdnhfe0mq2d"]
 
 [ext_resource type="PackedScene" uid="uid://bif7ui6kelf27" path="res://scenes/player.tscn" id="1_2q6dc"]
-[ext_resource type="Script" uid="uid://bkeko63l5c7cm" path="res://scenes/level.gd" id="1_w7c3h"]
+[ext_resource type="Script" uid="uid://bkeko63l5c7cm" path="res://scripts/level.gd" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://ce6cw11ecakba" path="res://Blank Segment.tscn" id="2_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://bdjq4n1b38xao" path="res://scenes/tunnel_segment.tscn" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://dgrro0bv81cdo" path="res://scenes/pulsator.gd" id="5_ppgk2"]
+[ext_resource type="Material" uid="uid://chru1r0nl3rin" path="res://textures/phych.tres" id="6_2r41h"]
+[ext_resource type="Material" uid="uid://utr5lm3hfllf" path="res://textures/Nate.tres" id="7_klq6b"]
+[ext_resource type="Material" uid="uid://bj7lucv65ole4" path="res://textures/phych2.tres" id="8_b121j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7c3h"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -46,7 +49,27 @@ shadow_enabled = true
 
 [node name="pulsator" type="Node3D" parent="." unique_id=820228084]
 script = ExtResource("5_ppgk2")
-rest_brightness = 0.8
+targetMat = ExtResource("6_2r41h")
+bpm = 103.0
+rest_brightness = 1.5
 max_brightness = 3.0
-decay_steepness = 2.0
+fade_speed = 100.0
+
+[node name="nate pulsator" type="Node3D" parent="." unique_id=888202123]
+script = ExtResource("5_ppgk2")
+targetMat = ExtResource("7_klq6b")
+bpm = 51.0
+rest_brightness = 1.0
+max_brightness = 2.0
+max_tint_amount = 0.5
+fade_speed = 100.0
+
+[node name="bgpulsator" type="Node3D" parent="." unique_id=1235441543]
+script = ExtResource("5_ppgk2")
+targetMat = ExtResource("8_b121j")
+bpm = 0.438
+rest_brightness = 1.0
+max_brightness = 100.0
+decay_steepness = 64.0
+max_tint_amount = 0.5
 fade_speed = 100.0

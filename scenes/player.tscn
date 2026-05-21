@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ckrqsqwleccwm" path="res://ship.fbx" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://dl3wo5fvwdgk5" path="res://ship.gd" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://dcosc1kqk1oq6" path="res://scenes/ring.tscn" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dd8grpfppd4p" path="res://scripts/follow.gd" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://crotjw0lvpxq3" path="res://scenes/floating cube.tscn" id="7_fjrip"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlg0r"]
 emission_shape_scale = Vector3(50, 50, 50)
@@ -21,7 +23,7 @@ size = Vector3(0.1, 0.1, 0.1)
 size = Vector3(0.2, 0.052508544, 0.47456056)
 
 [sub_resource type="LabelSettings" id="LabelSettings_g2els"]
-font_size = 100
+font_size = 200
 
 [node name="player" type="Node3D" unique_id=1637682301]
 
@@ -62,15 +64,36 @@ script = ExtResource("4_dqkch")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=870143172]
-anchors_preset = 5
+visible = false
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -86.0
-offset_top = 50.0
+offset_top = -68.5
 offset_right = 86.0
-offset_bottom = 187.0
+offset_bottom = 68.5
 grow_horizontal = 2
+grow_vertical = 2
 text = "999"
+label_settings = SubResource("LabelSettings_g2els")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Label" unique_id=836929934]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -340.0
+offset_right = 625.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FINAL SCORE"
 label_settings = SubResource("LabelSettings_g2els")
 horizontal_alignment = 1
 
@@ -153,6 +176,41 @@ rotationSpeedMin = 3
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 29)
 rotationSpeedMax = -3
 rotationSpeedMin = 3
+
+[node name="follow" type="Node3D" parent="." unique_id=963221419]
+script = ExtResource("6_tuyoq")
+
+[node name="Node3D" parent="follow" unique_id=247141091 instance=ExtResource("7_fjrip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 30)
+
+[node name="Label3D2" type="Label3D" parent="follow/Node3D" unique_id=1829951203]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
+pixel_size = 0.075
+text = "DISTANCE"
+
+[node name="Node3D2" parent="follow" unique_id=1125132096 instance=ExtResource("7_fjrip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 30)
+
+[node name="Label3D2" type="Label3D" parent="follow/Node3D2" unique_id=201563540]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
+pixel_size = 0.075
+text = "DISTANCE"
+
+[node name="Node3D3" parent="follow" unique_id=462978305 instance=ExtResource("7_fjrip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 30)
+
+[node name="Label3D2" type="Label3D" parent="follow/Node3D3" unique_id=1373068218]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
+pixel_size = 0.075
+text = "SPEED"
+
+[node name="Node3D4" parent="follow" unique_id=202182426 instance=ExtResource("7_fjrip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33, 30)
+
+[node name="Label3D2" type="Label3D" parent="follow/Node3D4" unique_id=867944799]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
+pixel_size = 0.075
+text = "SPEED"
 
 [connection signal="body_entered" from="Playerbody" to="Playerbody" method="_on_body_entered"]
 [connection signal="died" from="Playerbody" to="Camera3D" method="_on_playerbody_died"]

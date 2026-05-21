@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://drh1rtl76r0h8"]
+
+[ext_resource type="Texture2D" uid="uid://daynr1xh3ebqq" path="res://textures/texuter 4.jpg" id="1_aayvh"]
+
+[resource]
+albedo_color = Color(0.51194984, 0.36704093, 0.2420809, 1)
+albedo_texture = ExtResource("1_aayvh")
+emission_enabled = true
+emission_texture = ExtResource("1_aayvh")
