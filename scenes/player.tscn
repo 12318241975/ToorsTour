@@ -62,9 +62,9 @@ transform = Transform3D(-0.4184606, 0, -3.658299e-08, 0, 0.4184606, 0, 3.658299e
 script = ExtResource("4_dqkch")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
+visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=870143172]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

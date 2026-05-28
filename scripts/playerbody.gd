@@ -15,7 +15,7 @@ signal died
 @onready var scoreText2 = $"../follow/Node3D2/Label3D"
 @onready var speedText = $"../follow/Node3D3/Label3D"
 @onready var speedText2 = $"../follow/Node3D4/Label3D"
-@onready var finalScoreText = $"..CanvasLayer/Label"
+#@onready var finalScoreText = $"..CanvasLayer/Label"
 
 var targetPos: Vector3
 var velocity: Vector3
@@ -58,13 +58,13 @@ func _process(delta: float) -> void:
 	_update_visual_rotation(delta)
 
 func _update_visual_rotation(delta: float) -> void:
-	if velocity.length() < 0.001:
-		return
-	var target_basis = Basis.looking_at(velocity.normalized(), Vector3.UP)
-	var bank_angle: float = velocity.x * tiltAmount * 3.0
-	target_basis = target_basis.rotated(target_basis.z, bank_angle)
-	visual_basis = visual_basis.slerp(target_basis, tiltLerp * delta)
-	transform.basis = visual_basis.orthonormalized()
+	var bank_angle: float = velocity.x * tiltAmount
+	var pitch_angle: float = velocity.y * tiltAmount
+	var target_basis = Basis.IDENTITY
+	target_basis = target_basis.rotated(Vector3.FORWARD, bank_angle)
+	target_basis = target_basis.rotated(Vector3.RIGHT, pitch_angle)
+	visual_basis = visual_basis.slerp(target_basis, clamp(tiltLerp * delta, 0.0, 1.0)).orthonormalized()
+	transform.basis = visual_basis
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("obstacle"):
@@ -72,7 +72,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 func die() -> void:
 	print("DEAD")
-	finalScoreText.visable = true
-	finalScoreText.text = str(roundi(position.z / 10))
+	#finalScoreText.visible = true
+	#finalScoreText.text = str(roundi(position.z / 10))
 	died.emit()
 	isDead = true
