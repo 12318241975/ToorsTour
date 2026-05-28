@@ -186,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 30)
 [node name="Label3D2" type="Label3D" parent="follow/Node3D" unique_id=1829951203]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
 pixel_size = 0.075
-text = "DISTANCE"
+text = "SPEED"
 
 [node name="Node3D2" parent="follow" unique_id=1125132096 instance=ExtResource("7_fjrip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 30)
@@ -195,22 +195,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 30)
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
 pixel_size = 0.075
 text = "DISTANCE"
-
-[node name="Node3D3" parent="follow" unique_id=462978305 instance=ExtResource("7_fjrip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 30)
-
-[node name="Label3D2" type="Label3D" parent="follow/Node3D3" unique_id=1373068218]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
-pixel_size = 0.075
-text = "SPEED"
-
-[node name="Node3D4" parent="follow" unique_id=202182426 instance=ExtResource("7_fjrip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33, 30)
-
-[node name="Label3D2" type="Label3D" parent="follow/Node3D4" unique_id=867944799]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
-pixel_size = 0.075
-text = "SPEED"
 
 [connection signal="body_entered" from="Playerbody" to="Playerbody" method="_on_body_entered"]
 [connection signal="died" from="Playerbody" to="Camera3D" method="_on_playerbody_died"]

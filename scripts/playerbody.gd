@@ -11,10 +11,8 @@ extends Node3D
 
 signal died
 
-@onready var scoreText = $"../follow/Node3D/Label3D"
-@onready var scoreText2 = $"../follow/Node3D2/Label3D"
-@onready var speedText = $"../follow/Node3D3/Label3D"
-@onready var speedText2 = $"../follow/Node3D4/Label3D"
+@onready var scoreText = $"../follow/Node3D2/Label3D"
+@onready var speedText = $"../follow/Node3D/Label3D"
 #@onready var finalScoreText = $"..CanvasLayer/Label"
 
 var targetPos: Vector3
@@ -51,15 +49,13 @@ func _process(delta: float) -> void:
 
 	velocity = position - prev_position
 	scoreText.text = str(roundi(position.z / 10))
-	scoreText2.text = str(roundi(position.z / 10))
-	speedText.text = str(roundi(velocity.z * 100))
-	speedText2.text = str(roundi(velocity.z * 100))
+	speedText.text = str(roundi(velocity.z / delta / 10))
 
 	_update_visual_rotation(delta)
 
 func _update_visual_rotation(delta: float) -> void:
 	var bank_angle: float = velocity.x * tiltAmount
-	var pitch_angle: float = velocity.y * tiltAmount
+	var pitch_angle: float = velocity.y * tiltAmount / 10
 	var target_basis = Basis.IDENTITY
 	target_basis = target_basis.rotated(Vector3.FORWARD, bank_angle)
 	target_basis = target_basis.rotated(Vector3.RIGHT, pitch_angle)
