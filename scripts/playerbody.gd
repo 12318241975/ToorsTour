@@ -9,11 +9,16 @@ extends Node3D
 @export var tiltLerp: float = 5
 @export var levelReturn: float = 1.5
 
+@export var finalScoreText : Label
+@export var finalScoreTitle : Label
+@export var deadScreen : TextureRect
+@export var returnText : Label
+
 signal died
 
 @onready var scoreText = $"../follow/Node3D2/Label3D"
 @onready var speedText = $"../follow/Node3D/Label3D"
-#@onready var finalScoreText = $"..CanvasLayer/Label"
+
 
 var targetPos: Vector3
 var velocity: Vector3
@@ -35,8 +40,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventKey:
 		if event.keycode == KEY_ESCAPE:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		elif event.keycode == KEY_R:
-			get_tree().reload_current_scene()
+		elif event.keycode == KEY_SPACE:
+			if isDead:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 func _process(delta: float) -> void:
 	var prev_position = position
@@ -68,7 +75,10 @@ func _on_body_entered(body: Node3D) -> void:
 
 func die() -> void:
 	print("DEAD")
-	#finalScoreText.visible = true
-	#finalScoreText.text = str(roundi(position.z / 10))
+	finalScoreText.text = str(roundi(position.z / 10))
+	finalScoreText.modulate.a = 1
+	finalScoreTitle.modulate.a = 1
+	deadScreen.modulate.a = .5
+	returnText.modulate.a = 1
 	died.emit()
 	isDead = true

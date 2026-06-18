@@ -25,6 +25,11 @@ size = Vector3(0.2, 0.052508544, 0.47456056)
 [sub_resource type="LabelSettings" id="LabelSettings_g2els"]
 font_size = 200
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_fjrip"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fjrip"]
+font_size = 50
+
 [node name="player" type="Node3D" unique_id=1637682301]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1104734639]
@@ -44,7 +49,7 @@ lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_qlg0r")
 draw_pass_1 = SubResource("BoxMesh_tuyoq")
 
-[node name="Playerbody" type="Area3D" parent="." unique_id=1751294781]
+[node name="Playerbody" type="Area3D" parent="." unique_id=1751294781 node_paths=PackedStringArray("finalScoreText", "finalScoreTitle", "deadScreen", "returnText")]
 collision_mask = 2
 script = ExtResource("1_3vyb7")
 forwardSpeed = 60.0
@@ -52,6 +57,10 @@ sensitivity = 0.055
 moveLerp = 10.0
 tiltAmount = 1.0
 tiltLerp = 100.0
+finalScoreText = NodePath("../CanvasLayer/Label")
+finalScoreTitle = NodePath("../CanvasLayer/Label2")
+deadScreen = NodePath("../CanvasLayer/TextureRect")
+returnText = NodePath("../CanvasLayer/Label3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Playerbody" unique_id=1703818887]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1358952e-05, -0.015112307)
@@ -60,42 +69,6 @@ shape = SubResource("BoxShape3D_g2els")
 [node name="ship" parent="Playerbody" unique_id=1830704878 instance=ExtResource("3_qhqgy")]
 transform = Transform3D(-0.4184606, 0, -3.658299e-08, 0, 0.4184606, 0, 3.658299e-08, 0, -0.4184606, 0, 0, 0)
 script = ExtResource("4_dqkch")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
-visible = false
-
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=870143172]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = -68.5
-offset_right = 86.0
-offset_bottom = 68.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "999"
-label_settings = SubResource("LabelSettings_g2els")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/Label" unique_id=836929934]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -625.0
-offset_top = -340.0
-offset_right = 625.0
-offset_bottom = 69.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "FINAL SCORE"
-label_settings = SubResource("LabelSettings_g2els")
-horizontal_alignment = 1
 
 [node name="CSGBox3D" parent="." unique_id=2084896251 instance=ExtResource("5_qlg0r")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 549)
@@ -195,6 +168,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 30)
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 5, -5.3)
 pixel_size = 0.075
 text = "DISTANCE"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1357563291]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=870143172]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -68.5
+offset_right = 86.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+label_settings = SubResource("LabelSettings_g2els")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=836929934]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -340.0
+offset_right = 625.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "FINAL SCORE"
+label_settings = SubResource("LabelSettings_g2els")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=327431913]
+modulate = Color(0, 0, 0, 0)
+z_index = -1
+offset_right = 2647.0
+offset_bottom = 1653.0
+texture = SubResource("CanvasTexture_fjrip")
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=1259841783]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -729.5
+offset_top = 260.0
+offset_right = 729.5
+offset_bottom = 669.0001
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press space to return to menu"
+label_settings = SubResource("LabelSettings_fjrip")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Playerbody" to="Playerbody" method="_on_body_entered"]
 [connection signal="died" from="Playerbody" to="Camera3D" method="_on_playerbody_died"]

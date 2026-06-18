@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bon5ltgv1f5mk"]
 
-[ext_resource type="Script" uid="uid://b07hq764dl02" path="res://button.gd" id="1_uubjt"]
-[ext_resource type="ArrayMesh" uid="uid://be5a21kb7cf7d" path="res://scenes/Title.obj" id="2_5yleq"]
-[ext_resource type="Material" uid="uid://drh1rtl76r0h8" path="res://textures/phych4.tres" id="2_cx167"]
-[ext_resource type="Script" uid="uid://6arbjqgvuyn6" path="res://scenes/floating.gd" id="3_ylpcl"]
-[ext_resource type="Script" uid="uid://dgrro0bv81cdo" path="res://scenes/pulsator.gd" id="4_n4eug"]
-[ext_resource type="Material" uid="uid://tw86av3uumo1" path="res://textures/phych3.tres" id="5_dolsu"]
-[ext_resource type="Material" uid="uid://bj7lucv65ole4" path="res://textures/phych2.tres" id="6_dlksc"]
-[ext_resource type="Script" uid="uid://dfv8ndrksr3jf" path="res://playButton.gd" id="7_dlksc"]
-[ext_resource type="Script" uid="uid://igbti3148gvg" path="res://playlabel.gd" id="8_hcwhg"]
+[ext_resource type="Script" uid="uid://b07hq764dl02" path="res://button.gd" id="1_yt8fu"]
+[ext_resource type="Material" uid="uid://drh1rtl76r0h8" path="res://textures/phych4.tres" id="2_4umqm"]
+[ext_resource type="ArrayMesh" uid="uid://be5a21kb7cf7d" path="res://scenes/Title.obj" id="3_pp5m5"]
+[ext_resource type="Script" uid="uid://6arbjqgvuyn6" path="res://scenes/floating.gd" id="4_el213"]
+[ext_resource type="Material" uid="uid://bj7lucv65ole4" path="res://textures/phych2.tres" id="5_thu7x"]
+[ext_resource type="Script" uid="uid://dgrro0bv81cdo" path="res://scenes/pulsator.gd" id="6_2af52"]
+[ext_resource type="Material" uid="uid://tw86av3uumo1" path="res://textures/phych3.tres" id="7_7ycwl"]
+[ext_resource type="Script" uid="uid://dfv8ndrksr3jf" path="res://playButton.gd" id="8_rtd1e"]
+[ext_resource type="Script" uid="uid://igbti3148gvg" path="res://playlabel.gd" id="9_6c8sk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5yleq"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,35 +57,35 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 200
 text = "PLAY"
-script = ExtResource("1_uubjt")
+script = ExtResource("1_yt8fu")
 
 [node name="Title" type="MeshInstance3D" parent="." unique_id=1526575137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.815, -2.3)
-material_override = ExtResource("2_cx167")
-mesh = ExtResource("2_5yleq")
-script = ExtResource("3_ylpcl")
+material_override = ExtResource("2_4umqm")
+mesh = ExtResource("3_pp5m5")
+script = ExtResource("4_el213")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1834933039]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1709127, 0)
-material_override = ExtResource("6_dlksc")
+material_override = ExtResource("5_thu7x")
 mesh = SubResource("PlaneMesh_cx167")
 
 [node name="pulsator" type="Node3D" parent="." unique_id=1572324885]
-script = ExtResource("4_n4eug")
-targetMat = ExtResource("2_cx167")
+script = ExtResource("6_2af52")
+targetMat = ExtResource("2_4umqm")
 rest_brightness = 2.0
 max_brightness = 10.0
 fade_speed = 100.0
 
 [node name="buttoncube" type="MeshInstance3D" parent="." unique_id=692335379]
 transform = Transform3D(0.70710677, -0.70710677, 0, 0.650412, 0.650412, -0.3923371, 0.27742422, 0.27742422, 0.9198215, 0.016, 0, -0.5)
-material_override = ExtResource("5_dolsu")
+material_override = ExtResource("7_7ycwl")
 mesh = SubResource("BoxMesh_hcwhg")
-script = ExtResource("7_dlksc")
+script = ExtResource("8_rtd1e")
 tilt_amount = 1.0
 lerp_speed = 0.075
-targetMat = ExtResource("5_dolsu")
-emission_low = 0.5
+targetMat = ExtResource("7_7ycwl")
+emission_low = 1.25
 emission_high = 2.0
 
 [node name="Label3D" type="Label3D" parent="." unique_id=1658197911]
@@ -93,7 +93,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 text = "PLAY
 "
 outline_size = 10
-script = ExtResource("8_hcwhg")
+script = ExtResource("9_6c8sk")
 
 [connection signal="mouse_entered" from="CanvasLayer/Button" to="buttoncube" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Button" to="buttoncube" method="_on_button_mouse_exited"]
