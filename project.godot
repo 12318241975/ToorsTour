@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Toor's Toor"
-run/main_scene="uid://clxdnhfe0mq2d"
+run/main_scene="uid://bon5ltgv1f5mk"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

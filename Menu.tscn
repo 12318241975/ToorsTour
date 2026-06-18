@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bon5ltgv1f5mk"]
+
+[ext_resource type="Script" uid="uid://b07hq764dl02" path="res://button.gd" id="1_uubjt"]
+[ext_resource type="ArrayMesh" uid="uid://be5a21kb7cf7d" path="res://scenes/Title.obj" id="2_5yleq"]
+[ext_resource type="Material" uid="uid://drh1rtl76r0h8" path="res://textures/phych4.tres" id="2_cx167"]
+[ext_resource type="Script" uid="uid://6arbjqgvuyn6" path="res://scenes/floating.gd" id="3_ylpcl"]
+[ext_resource type="Script" uid="uid://dgrro0bv81cdo" path="res://scenes/pulsator.gd" id="4_n4eug"]
+[ext_resource type="Material" uid="uid://tw86av3uumo1" path="res://textures/phych3.tres" id="5_dolsu"]
+[ext_resource type="Material" uid="uid://bj7lucv65ole4" path="res://textures/phych2.tres" id="6_dlksc"]
+[ext_resource type="Script" uid="uid://dfv8ndrksr3jf" path="res://playButton.gd" id="7_dlksc"]
+[ext_resource type="Script" uid="uid://igbti3148gvg" path="res://playlabel.gd" id="8_hcwhg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5yleq"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ylpcl"]
+sky_material = SubResource("ProceduralSkyMaterial_5yleq")
+
+[sub_resource type="Environment" id="Environment_cx167"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_ylpcl")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cx167"]
+size = Vector2(25, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hcwhg"]
+
+[node name="Node3D" type="Node3D" unique_id=1461020518]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1714175185]
+environment = SubResource("Environment_cx167")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=840224028]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1556520858]
+transform = Transform3D(1, 0, 0, 0, 0.10978633, 0.99395525, 0, -0.99395525, 0.10978633, 0, 3.999555, -1.3374629)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=488204878]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1352502918]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -480.0
+offset_right = 300.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 200
+text = "PLAY"
+script = ExtResource("1_uubjt")
+
+[node name="Title" type="MeshInstance3D" parent="." unique_id=1526575137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.815, -2.3)
+material_override = ExtResource("2_cx167")
+mesh = ExtResource("2_5yleq")
+script = ExtResource("3_ylpcl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1834933039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1709127, 0)
+material_override = ExtResource("6_dlksc")
+mesh = SubResource("PlaneMesh_cx167")
+
+[node name="pulsator" type="Node3D" parent="." unique_id=1572324885]
+script = ExtResource("4_n4eug")
+targetMat = ExtResource("2_cx167")
+rest_brightness = 2.0
+max_brightness = 10.0
+fade_speed = 100.0
+
+[node name="buttoncube" type="MeshInstance3D" parent="." unique_id=692335379]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.650412, 0.650412, -0.3923371, 0.27742422, 0.27742422, 0.9198215, 0.016, 0, -0.5)
+material_override = ExtResource("5_dolsu")
+mesh = SubResource("BoxMesh_hcwhg")
+script = ExtResource("7_dlksc")
+tilt_amount = 1.0
+lerp_speed = 0.075
+targetMat = ExtResource("5_dolsu")
+emission_low = 0.5
+emission_high = 2.0
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1658197911]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.845, -0.895)
+text = "PLAY
+"
+outline_size = 10
+script = ExtResource("8_hcwhg")
+
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="buttoncube" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Button" to="buttoncube" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]

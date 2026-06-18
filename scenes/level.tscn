@@ -67,9 +67,9 @@ fade_speed = 100.0
 [node name="bgpulsator" type="Node3D" parent="." unique_id=1235441543]
 script = ExtResource("5_ppgk2")
 targetMat = ExtResource("8_b121j")
-bpm = 0.438
+bpm = 0.01
 rest_brightness = 1.0
 max_brightness = 100.0
-decay_steepness = 64.0
+decay_steepness = 30000.0
 max_tint_amount = 0.5
 fade_speed = 100.0
